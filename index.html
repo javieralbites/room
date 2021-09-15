@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ROOM</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="app">
+        <nav class="menu">
+            <div @click="menuActive = !menuActive" class="hamburgerBox" :class="{'active':menuActive}"></div>
+            <div class="logo">room</div>
+            <ul :class="{'active':menuActive}">
+                <li>home</li>
+                <li>shop</li>
+                <li>about</li>
+                <li>contact</li>
+            </ul>
+        </nav>
+        <div class="grid-row">
+            <div class="first-row">
+                <div class="image-hero">
+                    <img :src="image" alt="image">
+                </div>
+                <div class="text-hero">
+                    <h1>{{title}}</h1>
+                    <p>{{description}}</p>
+                    <a href="#">Shop Now <img src="./images/icon-arrow.svg" alt="arrow"></a>
+                    <div class="buttons">
+                        <span @click="back">
+                            <img src="./images/icon-angle-left.svg" alt="">
+                        </span>
+                        <span @click="next">
+                            <img src="./images/icon-angle-right.svg" alt="">
+                        </span>
+                      </div>
+                </div>
+            </div>
+            <div class="second-row">
+                <img src="./images/image-about-dark.jpg" alt="image">
+                <div class="text-about">
+                    <h3>about our furniture</h3>
+                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repudiandae aperiam iusto explicabo
+                        deleniti, autem quam ex recusandae rem accusantium praesentium vero veritatis culpa sunt, quidem
+                        doloribus maiores ea odit quos! Facere tempore, iste odit, neque ipsa harum officiis commodi
+                        sunt, ab a corporis. Laudantium delectus iste voluptate animi officiis. Eos.</p>
+                </div>
+                <img src="./images/image-about-light.jpg" alt="image">
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data() {
+                return {
+                    menuActive: true,
+                    numberHero:1,
+                    title: "Discover innovative ways to decorate",
+                    description: "We provide unmatched quality, comfort, and style for property owners across the country. Our experts combine form and function in bringing your vision to life. Create a room in your own style with our collection and make your property a reflection of you and what you love.",
+                    image: './images/desktop-image-hero-1.jpg',
+                }
+            },
+            methods:{
+                next: function () {
+                    if (this.numberHero === 1) {
+                        this.numberHero = 2;
+                        this.title = "We are available all across the globe",
+                        this.description = "With stores all over the world. It´s easy for you to find furniture for your home or place of business. Locally, we´re in most major cities throughout the country. Find the branch nearest you using our store locator. Any questions? Don´t hesitate to contact us today",
+                        this.image = './images/desktop-image-hero-2.jpg'
+                    }
+                    else if (this.numberHero === 2) {
+                        this.numberHero = 3
+                        this.title = "Manufactured with the best materials",
+                        this.description = "Our modern furniture store provide a high level of quality. Our company has invested in advanced technology to ensure that every product is made as perfect and as consistent as possible. With three decades of experience in this industry, we understand what customers want for their home and office"
+                        this.image = './images/desktop-image-hero-3.jpg'
+                    }
+                    else  {
+                        this.numberHero = 1
+                        this.title = "Discover innovative ways to decorate",
+                        this.description = "We provide unmatched quality, comfort, and style for property owners across the country. Our experts combine form and function in bringing your vision to life. Create a room in your own style with our collection and make your property a reflection of you and what you love."
+                        this.image = './images/desktop-image-hero-1.jpg'
+                    }
+                },
+                back: function () {
+                    if (this.numberHero === 1) {
+                        this.numberHero = 3
+                        this.title = "Manufactured with the best materials",
+                        this.description = "Our modern furniture store provide a high level of quality. Our company has invested in advanced technology to ensure that every product is made as perfect and as consistent as possible. With three decades of experience in this industry, we understand what customers want for their home and office"
+                        this.image = './images/desktop-image-hero-3.jpg'
+                    }
+                    else if (this.numberHero === 2){
+                        this.numberHero = 1
+                        this.title = "Discover innovative ways to decorate",
+                        this.description = "We provide unmatched quality, comfort, and style for property owners across the country. Our experts combine form and function in bringing your vision to life. Create a room in your own style with our collection and make your property a reflection of you and what you love."
+                        this.image = './images/desktop-image-hero-1.jpg'
+                    }
+                    else {
+                        this.numberHero = 2
+                        this.title = "We are available all across the globe",
+                        this.description = "With stores all over the world. It´s easy for you to find furniture for your home or place of business. Locally, we´re in most major cities throughout the country. Find the branch nearest you using our store locator. Any questions? Don´t hesitate to contact us today",
+                        this.image = './images/desktop-image-hero-2.jpg'
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
